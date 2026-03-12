@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pymongo
+python-jose
+passlib[bcrypt]
+google-generativeai
+opencv-python
+pillow
+python-dotenv

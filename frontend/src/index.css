@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply bg-[#FFF7ED] text-[#1e293b];
+  }
+}
+
+@layer components {
+  .me-card {
+    @apply bg-[#FFF1E0] border border-[#FED7AA] shadow-md rounded-xl transition duration-200 ease-out text-[#1e293b];
+    @apply hover:shadow-[0_10px_30px_rgba(248,180,114,0.35)] hover:-translate-y-[1px];
+  }
+  .me-btn {
+    @apply bg-[#F97316] text-white font-semibold rounded-lg transition duration-200 ease-out;
+    @apply hover:bg-[#EA580C] hover:shadow-[0_10px_24px_rgba(248,180,114,0.45)] active:scale-[0.99] disabled:opacity-60;
+  }
+  .me-btn-outline {
+    @apply border border-[#1e293b] text-[#1e293b] font-semibold rounded-lg transition duration-200 ease-out bg-transparent;
+    @apply hover:bg-[#f1f5f9] hover:shadow-[0_8px_20px_rgba(30,41,59,0.15)] active:scale-[0.99];
+  }
+  .me-input {
+    @apply border border-[#cbd5e1] bg-white text-[#1e293b] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#64748b];
+  }
+  .me-select {
+    @apply border border-[#cbd5e1] bg-white text-[#1e293b] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#64748b];
+  }
+}
