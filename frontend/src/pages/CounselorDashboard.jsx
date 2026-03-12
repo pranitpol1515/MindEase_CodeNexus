@@ -8,23 +8,23 @@ function AppointmentList({ title, appointments, emptyText }) {
   const { t } = useTranslation()
   return (
     <div className="mt-6 me-card p-6">
-      <div className="font-bold mb-3">{title}</div>
+      <div className="font-bold mb-3 text-[#1e293b]">{title}</div>
       {appointments.length === 0 ? (
-        <p className="text-sm text-[#F5F9FF]/75">{emptyText}</p>
+        <p className="text-sm text-[#475569]">{emptyText}</p>
       ) : (
-        <ul className="divide-y divide-[#8AD7FF]/20">
+        <ul className="divide-y divide-[#FED7AA]">
           {appointments.map((a) => (
             <li key={a.id} className="py-3 flex justify-between">
               <div>
-                <div className="font-semibold">
+                <div className="font-semibold text-[#1e293b]">
                   {a.user_name || t("role_user")} ({a.age_group === "below_18" ? t("below_18") : t("above_18")})
                 </div>
-                <div className="text-xs text-[#F5F9FF]/70">Mobile: {a.mobile_no}</div>
+                <div className="text-xs text-[#475569]">Mobile: {a.mobile_no}</div>
                 {a.parent_mobile_no && (
-                  <div className="text-xs text-[#F5F9FF]/70">Parent mobile: {a.parent_mobile_no}</div>
+                  <div className="text-xs text-[#475569]">Parent mobile: {a.parent_mobile_no}</div>
                 )}
               </div>
-              <div className="text-sm text-[#F5F9FF]/85 text-right">
+              <div className="text-sm text-[#1e293b] text-right">
                 <div>{a.date}</div>
                 <div>{a.time}</div>
               </div>
@@ -96,12 +96,12 @@ function CounselorDashboard() {
     navigate("/counselor/login")
   }
 
-  if (!me) return <div className="p-10">Loading...</div>
+  if (!me) return <div className="p-10 text-[#1e293b]">Loading...</div>
 
   return (
     <div className="p-6 lg:p-10 min-h-screen">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">{t("counselor_dashboard")}</h1>
+        <h1 className="text-3xl font-bold text-[#1e293b]">{t("counselor_dashboard")}</h1>
         <div className="flex items-center gap-4">
           <LanguageSelector />
           <button onClick={logout} className="me-btn-outline px-4 py-2 text-sm">{t("logout")}</button>
@@ -109,14 +109,14 @@ function CounselorDashboard() {
       </div>
 
       <div className="mt-6 me-card p-6">
-        <div className="text-xl font-bold">{me.name}</div>
-        <div className="text-[#F5F9FF]/85">{me.email}</div>
-        <div className="text-[#F5F9FF]/85">{me.qualification}</div>
-        <div className="text-[#F5F9FF]/70">License: {me.license_number}</div>
+        <div className="text-xl font-bold text-[#1e293b]">{me.name}</div>
+        <div className="text-[#475569]">{me.email}</div>
+        <div className="text-[#475569]">{me.qualification}</div>
+        <div className="text-[#64748b]">License: {me.license_number}</div>
       </div>
 
       <div className="mt-6 me-card p-6 flex items-center gap-4">
-        <span className="font-semibold text-sm text-[#F5F9FF]/85">{t("view_appointments_by_date")}</span>
+        <span className="font-semibold text-sm text-[#1e293b]">{t("view_appointments_by_date")}</span>
         <input
           type="date"
           className="me-input text-sm"
@@ -127,7 +127,7 @@ function CounselorDashboard() {
           <button
             type="button"
             onClick={() => setFilterDate("")}
-            className="text-xs text-[#F5F9FF]/70 hover:underline"
+            className="text-xs text-[#64748b] hover:underline"
           >
             {t("clear")}
           </button>

@@ -64,12 +64,12 @@ function AdminDashboard() {
     navigate("/admin/login")
   }
 
-  if (loading) return <div className="p-10">Loading...</div>
+  if (loading) return <div className="p-10 text-[#1e293b]">Loading...</div>
 
   return (
     <div className="p-6 lg:p-10 min-h-screen">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">{t("admin_dashboard")}</h1>
+        <h1 className="text-3xl font-bold text-[#1e293b]">{t("admin_dashboard")}</h1>
         <div className="flex items-center gap-4">
           <LanguageSelector />
           <button onClick={logout} className="me-btn-outline px-4 py-2 text-sm">{t("logout")}</button>
@@ -78,9 +78,9 @@ function AdminDashboard() {
 
       <div className="grid grid-cols-2 gap-6 mt-8">
         <div className="me-card p-6">
-          <h2 className="text-xl font-bold mb-4">{t("counselor_applications")}</h2>
+          <h2 className="text-xl font-bold mb-4 text-[#1e293b]">{t("counselor_applications")}</h2>
           {apps.length === 0 ? (
-            <p className="text-sm text-[#F5F9FF]/75">{t("no_pending_applications")}</p>
+            <p className="text-sm text-[#475569]">{t("no_pending_applications")}</p>
           ) : (
             apps.map((a) => (
               <div key={a.id} className="border border-[#8AD7FF]/25 rounded-xl p-4 mb-3 bg-[#0B1F4B]/40">
@@ -100,10 +100,10 @@ function AdminDashboard() {
         </div>
 
         <div className="me-card p-6">
-          <h2 className="text-xl font-bold mb-4">{t("motivation_playlist")}</h2>
+          <h2 className="text-xl font-bold mb-4 text-[#1e293b]">{t("motivation_playlist")}</h2>
           <div className="space-y-2 mb-3">
             {motivationUrls.length === 0 && (
-              <p className="text-sm text-[#F5F9FF]/70">{t("no_motivation_videos")}</p>
+              <p className="text-sm text-[#475569]">{t("no_motivation_videos")}</p>
             )}
             {motivationUrls.map((url, index) => (
               <div key={url + index} className="flex items-center gap-2 text-sm">
@@ -160,10 +160,10 @@ function AdminDashboard() {
             {t("save_motivation_list")}
           </button>
 
-          <h2 className="text-xl font-bold mb-2 mt-6">{t("meditation_playlist")}</h2>
+          <h2 className="text-xl font-bold mb-2 mt-6 text-[#1e293b]">{t("meditation_playlist")}</h2>
           <div className="space-y-2 mb-3">
             {meditationUrls.length === 0 && (
-              <p className="text-sm text-[#F5F9FF]/70">{t("no_meditation_videos")}</p>
+              <p className="text-sm text-[#475569]">{t("no_meditation_videos")}</p>
             )}
             {meditationUrls.map((url, index) => (
               <div key={url + index} className="flex items-center gap-2 text-sm">
@@ -223,7 +223,7 @@ function AdminDashboard() {
       </div>
 
       <div className="mt-8 me-card p-6">
-        <h2 className="text-xl font-bold mb-4">{t("users_title")}</h2>
+        <h2 className="text-xl font-bold mb-4 text-[#1e293b]">{t("users_title")}</h2>
         <div className="grid grid-cols-3 gap-3">
           {users.map((u) => (
             <div key={u.id} className="border border-[#8AD7FF]/25 rounded-xl p-3 bg-[#0B1F4B]/40">

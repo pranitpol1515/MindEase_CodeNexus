@@ -54,8 +54,8 @@ function CounselorProfile() {
     }
   }
 
-  if (loading) return <div className="p-10">Loading...</div>
-  if (!counselor) return <div className="p-10">Counselor not found.</div>
+  if (loading) return <div className="p-10 text-[#1e293b]">Loading...</div>
+  if (!counselor) return <div className="p-10 text-[#1e293b]">Counselor not found.</div>
 
   return (
     <div className="p-6 lg:p-10 min-h-screen">
@@ -64,14 +64,14 @@ function CounselorProfile() {
       </button>
 
       <div className="mt-4 me-card p-6">
-        <h1 className="text-3xl font-bold">{counselor.name}</h1>
-        <p className="mt-2 text-[#F5F9FF]/85">{counselor.qualification}</p>
-        <p className="text-[#F5F9FF]/70">{counselor.city}</p>
-        <p className="mt-2 text-sm text-[#F5F9FF]/70">Appointments: {counselor.appointments_count ?? 0}</p>
+        <h1 className="text-3xl font-bold text-[#1e293b]">{counselor.name}</h1>
+        <p className="mt-2 text-[#475569]">{counselor.qualification}</p>
+        <p className="text-[#64748b]">{counselor.city}</p>
+        {counselor.phone && <p className="mt-2 text-sm text-[#475569]">Phone: {counselor.phone}</p>}
       </div>
 
       <div className="mt-6 me-card p-6">
-        <h2 className="text-xl font-bold mb-4">Book Appointment</h2>
+        <h2 className="text-xl font-bold mb-4 text-[#1e293b]">Book Appointment</h2>
 
         {isBelow18 && (
           <input
@@ -118,7 +118,7 @@ function CounselorProfile() {
           Book appointment
         </button>
 
-        {bookingMsg && <div className="mt-3 text-sm text-[#F5F9FF]/85">{bookingMsg}</div>}
+        {bookingMsg && <div className="mt-3 text-sm text-[#1e293b]">{bookingMsg}</div>}
       </div>
     </div>
   )

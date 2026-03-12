@@ -10,8 +10,14 @@ function UserLogin() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async () => {
+    if (!username.trim() || !password) {
+      alert("Please enter username and password.")
+      return
+    }
+    setLoading(true)
     try {
       const res = await API.post("/auth/user/login", { username, password })
       if (res.data.message === "success") {
@@ -25,8 +31,20 @@ function UserLogin() {
         return
       }
       alert("Invalid username or password")
-    } catch {
-      alert("Server error. Please try again.")
+    } catch (err) {
+      const status = err?.response?.status
+      const detail = err?.response?.data?.detail
+      if (status === 401) {
+        alert("Invalid username or password")
+      } else if (status === 422) {
+        alert("Please check your inputs and try again.")
+      } else if (detail) {
+        alert(String(detail))
+      } else {
+        alert("Server error. Please try again.")
+      }
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -37,7 +55,7 @@ function UserLogin() {
           <h2 className="text-2xl font-bold">{t("login")} ({t("role_user")})</h2>
           <LanguageSelector />
         </div>
-        <p className="text-sm text-[#F5F9FF]/75 mt-1">{t("user_login_desc")}</p>
+        <p className="text-sm text-[#475569] mt-1">{t("user_login_desc")}</p>
 
         <div className="mt-5 space-y-3">
           <input
@@ -54,16 +72,16 @@ function UserLogin() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button onClick={handleLogin} className="w-full me-btn py-2">
-            {t("login")}
+            {loading ? t("login") + "..." : t("login")}
           </button>
-          <p className="text-sm text-center text-[#F5F9FF]/80">
+          <p className="text-sm text-center text-[#475569]">
             {t("no_account")}{" "}
-            <Link to="/signup" className="text-[#8AD7FF] font-semibold hover:underline">
+            <Link to="/signup" className="text-[#0f766e] font-semibold hover:underline">
               {t("signup")}
             </Link>
           </p>
           <p className="text-sm text-center">
-            <Link to="/login" className="text-[#8AD7FF] font-semibold hover:underline">
+            <Link to="/login" className="text-[#0f766e] font-semibold hover:underline">
               ← Back
             </Link>
           </p>

@@ -1,38 +1,21 @@
-from pydantic import BaseModel, EmailStr
-from typing import Literal, Optional
-
+from pydantic import BaseModel
 
 class User(BaseModel):
     username: str
-    email: EmailStr
+    email: str
     password: str
-    age_group: Optional[Literal["below_18", "above_18"]] = None
-    birthdate: Optional[str] = None  # ISO date string from frontend (yyyy-mm-dd)
-    language: Optional[Literal["en", "hi", "mr"]] = "en"
-    role: Optional[Literal["user", "counselor", "admin"]] = "user"
 
+class SignupUser(BaseModel):
+    username: str
+    email: str
+    password: str
+    age_group: str = "above_18"
+    birthdate: str = ""
+    language: str = "en"
 
 class LoginUser(BaseModel):
     username: str
     password: str
-    role: Optional[Literal["user", "counselor", "admin"]] = "user"
-
 
 class Mood(BaseModel):
-    username: str
-    mood: str
-
-
-class ChatMessage(BaseModel):
-    username: str
-    message: str
-
-
-class CounselorApplication(BaseModel):
-    name: str
-    email: EmailStr
-    qualification: str
-    license_number: str
-    city: Optional[str] = None
-    phone: Optional[str] = None
-    password: str
+    mood:str

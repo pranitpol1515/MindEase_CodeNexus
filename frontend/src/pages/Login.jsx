@@ -15,35 +15,45 @@ localStorage.setItem("language", lng)
 
 return(
 
-<div className="min-h-screen bg-[#0B1F4B] flex items-center justify-center p-6">
+<div className="min-h-screen bg-[#FFF7ED] flex items-center justify-center p-6">
   <div className="w-full max-w-5xl">
     <div className="flex items-center justify-between mb-6">
       <div>
-        <h1 className="text-4xl font-bold text-[#F5F9FF]">{t("login_title")}</h1>
-        <p className="text-[#8AD7FF] mt-1">{t("login_subtitle")}</p>
+        <h1 className="text-4xl font-bold text-[#1e293b]">{t("login_title")}</h1>
+        <p className="text-[#475569] mt-1">{t("login_subtitle")}</p>
       </div>
 
-      <select
-        className="me-select"
-        value={language}
-        onChange={(e)=>changeLanguage(e.target.value)}
-      >
-        <option value="en">English</option>
-        <option value="hi">Hindi</option>
-        <option value="mr">Marathi</option>
-      </select>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          title="Admin login"
+          className="w-9 h-9 rounded-full border border-[#FDAE6B]/70 flex items-center justify-center text-sm text-[#1e293b] bg-[#FFF1E0] hover:bg-[#FED7AA] transition"
+          onClick={() => (window.location.href = "/admin/login")}
+        >
+          🛡
+        </button>
+        <select
+          className="me-select"
+          value={language}
+          onChange={(e)=>changeLanguage(e.target.value)}
+        >
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="mr">Marathi</option>
+        </select>
+      </div>
     </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* User Login */}
       <div className="me-card p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[#F5F9FF]">{t("role_user")}</h2>
-          <span className="text-xs px-2 py-1 rounded-full bg-[#8AD7FF]/20 text-[#8AD7FF]">
+          <h2 className="text-xl font-bold text-[#1e293b]">{t("role_user")}</h2>
+          <span className="text-xs px-2 py-1 rounded-full bg-[#FFEDD5] text-[#1e293b]">
             {t("login")} / {t("signup")}
           </span>
         </div>
-        <p className="text-sm text-[#F5F9FF]/80 mt-2">{t("user_login_desc")}</p>
+        <p className="text-sm text-[#1e293b]/80 mt-2">{t("user_login_desc")}</p>
 
         <div className="mt-5 grid grid-cols-2 gap-3">
           <Link to="/user/login" className="text-center me-btn py-2">
@@ -58,12 +68,12 @@ return(
       {/* Counselor */}
       <div className="me-card p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[#F5F9FF]">{t("role_counselor")}</h2>
-          <span className="text-xs px-2 py-1 rounded-full bg-[#FFD166]/20 text-[#FFD166]">
+          <h2 className="text-xl font-bold text-[#1e293b]">{t("role_counselor")}</h2>
+          <span className="text-xs px-2 py-1 rounded-full bg-[#FEF3C7] text-[#1e293b]">
             {t("signup")} / {t("login")}
           </span>
         </div>
-        <p className="text-sm text-[#F5F9FF]/80 mt-2">{t("counselor_desc")}</p>
+        <p className="text-sm text-[#1e293b]/80 mt-2">{t("counselor_desc")}</p>
 
         <div className="mt-5 grid grid-cols-2 gap-3">
           <Link
@@ -81,25 +91,6 @@ return(
         </div>
       </div>
 
-      {/* Admin */}
-      <div className="me-card p-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[#F5F9FF]">{t("role_admin")}</h2>
-          <span className="text-xs px-2 py-1 rounded-full bg-[#8AD7FF]/15 text-[#8AD7FF]">
-            Verify / Manage
-          </span>
-        </div>
-        <p className="text-sm text-[#F5F9FF]/80 mt-2">{t("admin_desc")}</p>
-
-        <div className="mt-5">
-          <Link
-            to="/admin/login"
-            className="block text-center me-btn py-2"
-          >
-            {t("login")}
-          </Link>
-        </div>
-      </div>
     </div>
   </div>
 </div>

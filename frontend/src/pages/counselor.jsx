@@ -26,11 +26,11 @@ return(
 <div className="p-6 lg:p-10 min-h-screen">
 
 <div className="flex items-center justify-between mb-6">
-  <h1 className="text-3xl font-bold">{t("counselor_list_title")}</h1>
+  <h1 className="text-3xl font-bold text-[#1e293b]">{t("counselor_list_title")}</h1>
   <LanguageSelector />
 </div>
 
-{loading && <div>Loading...</div>}
+{loading && <div className="text-[#1e293b]">Loading...</div>}
 
 {counselors.map((c,i)=>(
 
@@ -38,9 +38,9 @@ return(
 
 <div className="flex items-center justify-between gap-4">
   <div>
-    <h2 className="font-bold">{c.name}</h2>
-    <p className="text-sm text-[#F5F9FF]/80">{c.qualification}</p>
-    <p className="text-sm text-[#F5F9FF]/70">{c.city}</p>
+    <h2 className="font-bold text-[#1e293b]">{c.name}</h2>
+    <p className="text-sm text-[#475569]">{c.qualification}</p>
+    <p className="text-sm text-[#64748b]">{c.city}</p>
   </div>
   <button
     onClick={()=>navigate(`/counselor/${c.id}`)}
@@ -50,11 +50,11 @@ return(
   </button>
 </div>
 
-<p className="mt-3 text-sm text-[#F5F9FF]/85">{c.phone}</p>
+<p className="mt-3 text-sm text-[#475569]">{c.phone}</p>
 
 <a
 href={`tel:${c.phone}`}
-className="text-[#8AD7FF] font-semibold hover:underline"
+className="text-[#0f766e] font-semibold hover:underline"
 >
 {t("call_counselor")}
 </a>

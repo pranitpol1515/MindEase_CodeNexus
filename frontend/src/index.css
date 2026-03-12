@@ -2,27 +2,27 @@
 
 @layer base {
   body {
-    @apply bg-[#0B1F4B] text-[#F5F9FF];
+    @apply bg-[#FFF7ED] text-[#1e293b];
   }
 }
 
 @layer components {
   .me-card {
-    @apply bg-[#132F6B] border border-[#8AD7FF]/40 shadow-lg rounded-xl transition duration-200 ease-out;
-    @apply hover:shadow-[0_0_30px_rgba(138,215,255,0.16)] hover:-translate-y-[1px];
+    @apply bg-[#FFF1E0] border border-[#FED7AA] shadow-md rounded-xl transition duration-200 ease-out text-[#1e293b];
+    @apply hover:shadow-[0_10px_30px_rgba(248,180,114,0.35)] hover:-translate-y-[1px];
   }
   .me-btn {
-    @apply bg-[#5ED3D1] text-[#0B1F4B] font-semibold rounded-lg transition duration-200 ease-out;
-    @apply hover:bg-[#4bbfbd] hover:shadow-[0_0_22px_rgba(94,211,209,0.18)] active:scale-[0.99] disabled:opacity-60;
+    @apply bg-[#F97316] text-white font-semibold rounded-lg transition duration-200 ease-out;
+    @apply hover:bg-[#EA580C] hover:shadow-[0_10px_24px_rgba(248,180,114,0.45)] active:scale-[0.99] disabled:opacity-60;
   }
   .me-btn-outline {
-    @apply border border-[#5ED3D1] text-[#5ED3D1] font-semibold rounded-lg transition duration-200 ease-out;
-    @apply hover:bg-[#132F6B] hover:shadow-[0_0_22px_rgba(94,211,209,0.10)] active:scale-[0.99];
+    @apply border border-[#1e293b] text-[#1e293b] font-semibold rounded-lg transition duration-200 ease-out bg-transparent;
+    @apply hover:bg-[#f1f5f9] hover:shadow-[0_8px_20px_rgba(30,41,59,0.15)] active:scale-[0.99];
   }
   .me-input {
-    @apply border border-[#8AD7FF]/40 bg-[#0B1F4B] text-[#F5F9FF] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8AD7FF]/60;
+    @apply border border-[#cbd5e1] bg-white text-[#1e293b] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#64748b];
   }
   .me-select {
-    @apply border border-[#8AD7FF]/40 bg-[#132F6B] text-[#F5F9FF] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8AD7FF]/60;
+    @apply border border-[#cbd5e1] bg-white text-[#1e293b] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#64748b];
   }
 }

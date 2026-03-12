@@ -12,7 +12,7 @@ const { t, i18n } = useTranslation()
 const [username,setUsername] = useState("")
 const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
-const [ageGroup,setAgeGroup] = useState("")
+const [age,setAge] = useState("")
 const [birthdate,setBirthdate] = useState("")
 const [language,setLanguage] = useState("en")
 
@@ -24,10 +24,18 @@ localStorage.setItem("language", lng)
 
 const handleSignup = async ()=>{
 
-if(!username || !email || !password || !ageGroup || !birthdate){
+if(!username || !email || !password || !age || !birthdate){
 alert("Please fill all fields")
 return
 }
+
+const numericAge = parseInt(age, 10)
+if (Number.isNaN(numericAge) || numericAge <= 0 || numericAge > 120) {
+alert("Please enter a valid age.")
+return
+}
+
+const ageGroup = numericAge < 18 ? "below_18" : "above_18"
 
 try{
 
@@ -44,10 +52,9 @@ alert("Account created successfully")
 
 navigate("/login")
 
-}catch{
-
-alert("Signup failed. Try again.")
-
+}catch(err){
+const msg = err?.response?.data?.detail || err?.response?.data?.message || "Signup failed. Try again."
+alert(Array.isArray(msg) ? msg[0] : msg)
 }
 
 }
@@ -75,24 +82,26 @@ value={language}
 <input
 className="me-input w-full mb-3"
 placeholder={t("username")}
+value={username}
 onChange={(e)=>setUsername(e.target.value)}
 />
 
 <input
 className="me-input w-full mb-3"
 placeholder={t("email")}
+value={email}
 onChange={(e)=>setEmail(e.target.value)}
 />
 
-<select
-className="me-select w-full mb-3"
-value={ageGroup}
-onChange={(e)=>setAgeGroup(e.target.value)}
->
-  <option value="">{t("age_group")}</option>
-  <option value="below_18">{t("below_18")}</option>
-  <option value="above_18">{t("above_18")}</option>
-</select>
+<input
+type="number"
+min="1"
+max="120"
+className="me-input w-full mb-3"
+placeholder={t("age_group")}
+value={age}
+onChange={(e)=>setAge(e.target.value)}
+/>
 
 <input
 type="date"
@@ -105,6 +114,7 @@ onChange={(e)=>setBirthdate(e.target.value)}
 type="password"
 className="me-input w-full mb-3"
 placeholder={t("password")}
+value={password}
 onChange={(e)=>setPassword(e.target.value)}
 />
 
@@ -117,7 +127,7 @@ className="me-btn w-full py-2"
 {t("signup")} </button>
 
 <p className="mt-4 text-center">
-{t("have_account")} <Link to="/login" className="text-[#8AD7FF] font-semibold hover:underline">{t("login")}</Link>
+{t("have_account")} <Link to="/login" className="text-[#0f766e] font-semibold hover:underline">{t("login")}</Link>
 </p>
 
 </div>
